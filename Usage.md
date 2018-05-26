@@ -145,7 +145,16 @@ XSIGNORELOGSBAKTAR=xs-ignore-app_logs-$(date +%y%m%d).tar.xz
 tar zcvf $XSIGNORELOGSBAKTAR $XSIGNORELOGSBAK
 ```
 
-### 5.错误处理
+### 5.添加用户并授权
+```
+create user xiuery@'%' identified by 'xiuery';
+
+grant select,update,delete on *.* to xiuery;
+
+flush privileges;
+```
+
+### 6.错误处理
 
 - ONLY_FULL_GROUP_BY报错
 ```
