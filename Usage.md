@@ -155,13 +155,25 @@ create user xiuery@'%' identified by 'xiuery';
 grant select,update,delete on *.* to xiuery;
 
 # or 创建用户并添加权限
-grant all privileges on *.* to 'xiuery'@'%' identified by 'xiuery';
+grant select,update,delete on *.* to 'xiuery'@'%' identified by 'xiuery';
 
 # 使修改立即生效
 flush privileges;
 ```
 
-### 6.错误处理
+### 6.授权远程连接
+```
+# 添加新用户
+grant select,update,delete on *.* to 'xiuery'@'%' identified by 'xiuery';
+
+# 修改my.cnf
+skip-networking             # 注释掉
+bind-address = 0.0.0.0      # 需要连接的ip地址
+
+# 重启mysql
+```
+
+### 7.错误处理
 
 - ONLY_FULL_GROUP_BY报错
 ```
