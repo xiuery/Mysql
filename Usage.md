@@ -150,10 +150,14 @@ tar zcvf $XSIGNORELOGSBAKTAR $XSIGNORELOGSBAK
 
 ### 5.添加用户并授权
 ```
+# 创建用户 - 添加权限
 create user xiuery@'%' identified by 'xiuery';
-
 grant select,update,delete on *.* to xiuery;
 
+# or 创建用户并添加权限
+grant all privileges on *.* to 'xiuery'@'%' identified by 'xiuery';
+
+# 使修改立即生效
 flush privileges;
 ```
 
