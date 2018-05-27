@@ -167,10 +167,18 @@ flush privileges;
 grant select,update,delete on *.* to 'xiuery'@'%' identified by 'xiuery';
 
 # 修改my.cnf
+vi /etc/my.cnf
 skip-networking             # 注释掉
 bind-address = 0.0.0.0      # 需要连接的ip地址
 
 # 重启mysql
+
+# 如果还是无法远程连接，就要修改服务器的防火墙了
+# ×××××××× 注意：这是很不安全的 ×××××××××
+# 打开防火墙配置文件
+vi /etc/sysconfig/iptables
+# 开放3306
+-A INPUT -p tcp -m tcp --dport 3306 -j ACCEPT
 ```
 
 ### 7.错误处理
