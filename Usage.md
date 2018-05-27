@@ -104,7 +104,10 @@ select
 from `xs`.`app_acivity`
 where id > 1000000
 ```
-
+- 查询同一字段值存在多个
+```
+select `id`,`name`,count(`name`) from `xs`.`app_user` group by `name` having count(`name`) > 1
+```
 
 ### 3.数据库脚本
 ```
