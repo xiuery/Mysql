@@ -207,3 +207,8 @@ $ /usr/bin/mysqlcheck -u root -proot\!123\$ -c xs app_logs
 #修复指定表
 $ /usr/bin/mysqlcheck -u root -proot\!123\$ -r xs app_logs
 ```
+
+- source 导入乱码的问题
+```
+mysql -u root -p --default-character-set=utf8
+```
