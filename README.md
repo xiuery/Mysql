@@ -92,6 +92,16 @@ where title REGEXP '-'
 union all
 ```
 
+- 复制表结构
+```
+create table `xs`.`app_log_1` like `xs`.`app_log`
+```
+
+- 复制表结构+数据
+```
+create table `xs`.`app_log_1` as select * from `xs`.`app_log`
+```
+
 - 查询插入记录
 ```
 mysql>insert into `xs`.`app_log`
@@ -213,3 +223,10 @@ $ /usr/bin/mysqlcheck -u root -proot\!123\$ -r xs app_logs
 ```
 mysql -u root -p --default-character-set=utf8
 ```
+
+- auto_increment的问题
+在表设计自增时，如果想要在中间插入几条记录,先更新表
+```
+update `xs`.`app_log` set id = id+3 where id>20 order by id desc
+```
+此时就会造成一个问题，表会增加3个id数据，但是auto_increment 任然停留在原来的位置，这时再添加数据就会报主键错误
