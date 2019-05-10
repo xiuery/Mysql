@@ -230,3 +230,24 @@ mysql -u root -p --default-character-set=utf8
 update `xs`.`app_log` set id = id+3 where id>20 order by id desc
 ```
 此时就会造成一个问题，表会增加3个id数据，但是auto_increment 任然停留在原来的位置，这时再添加数据就会报主键错误
+
+### 8.长度说明
+```
+    
+-- 长度说明:
+-- tinyint(4):
+  -- unsigned: -128 - 127
+  -- unsigned:    0 - 255
+-- smallint(6):
+  -- unsigned: -32768 - 32767
+  -- unsigned:      0 - 65535
+-- mediumint(9):
+  -- unsigned: -8388608 - 8388607
+  -- unsigned:        0 - 16777215
+-- int(11):
+  -- unsigned: -2147483648 - 2147483647
+  -- unsigned:           0 - 4294967295
+-- bigint(20):
+  -- unsigned: -9223372036854775808 - 9223372036854775807
+  -- unsigned:                    0 - 18446744073709551615
+```
